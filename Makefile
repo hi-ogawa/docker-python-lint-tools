@@ -16,6 +16,13 @@ build:
 build/cache:
 	docker build -t $(IMAGE_TAG) - < Dockerfile
 
+statistics:
+	docker images $(IMAGE_TAG)
+	docker history $(IMAGE_TAG)
+
+push:
+	docker push $(IMAGE_TAG)
+
 lint:
 	$(HADOLINT) < Dockerfile
 	$(PRETTIER) --check .
